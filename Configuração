@@ -1,0 +1,37 @@
+Visualização do IP da máquina:
+
+Execute o comando ip a para visualizar detalhes de rede, incluindo o endereço IP da máquina local.
+Geração de uma chave SSH:
+
+Utilize o comando ssh-keygen para gerar uma nova chave SSH. Esta chave será usada para autenticação segura entre sistemas.
+Para especificar um tipo de chave, como Ed25519, utilize ssh-keygen -t ed25519.
+O uso de -C "comentário" é opcional e permite adicionar um comentário à chave para identificação.
+Cópia da chave SSH para outro servidor:
+
+Utilize ssh-copy-id -i ~/.ssh/chave_publica "ip_do_servidor_destino" para copiar a chave pública para o servidor destino.
+Este procedimento deve ser repetido para cada servidor remoto onde você deseja autenticar-se com a chave SSH.
+Criação de uma nova chave para o Ansible:
+
+Execute ssh-keygen -t ed25519 -C "ansible" para gerar uma chave SSH específica para o Ansible, uma ferramenta de automação.
+Ao solicitar o caminho, especifique um local desejado para salvar a chave, garantindo que o nome da chave seja único para evitar a substituição da chave anterior.
+Cópia da chave do Ansible para cada servidor alvo:
+
+Utilize ssh-copy-id -i ~/.ssh/chave_publica "ip_do_servidor_destino" para copiar a chave pública do Ansible para cada servidor alvo que será gerenciado com o Ansible.
+Seleção da chave SSH a ser utilizada:
+
+Para especificar qual chave SSH utilizar ao se conectar a um servidor remoto, utilize o comando ssh -i ~/.ssh/nome_da_chave ip_do_servidor_destino.
+Armazenamento temporário da senha SSH:
+
+Execute eval $(ssh-agent) para inicializar o agente SSH, que gerencia as chaves privadas temporariamente.
+Em seguida, utilize ssh-add para adicionar suas chaves privadas ao agente SSH, permitindo o acesso a servidores remotos sem a necessidade de inserir a senha repetidamente.
+Criação de um comando permanente para armazenamento de senha SSH:
+
+Para tornar o armazenamento temporário da senha SSH permanente, crie um alias usando o comando alias "nome do comando"='eval $(ssh-agent) && ssh-add'.
+Execute o comando recém-criado no terminal para inicializar o agente SSH e adicionar suas chaves privadas.
+Isso permite que você insira a senha SSH apenas uma vez durante a sessão de terminal.
+Este algoritmo explica detalhadamente o processo de geração de chaves SSH, cópia para servidores remotos, seleção da chave a ser utilizada e armazenamento temporário ou permanente da senha SSH para facilitar o acesso seguro a servidores remotos. Certifique-se de adaptar as instruções conforme necessário para o seu ambiente específico.
+
+
+
+
+

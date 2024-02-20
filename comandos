@@ -1,0 +1,9 @@
+Comandos ansible
+
+ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+
+listar todos os componentes do comutador: ansible all -m gather_facts
+
+listar todos os hosts: ansible all --list-hosts
+
+limita os hosts: --limit "ip do host"
